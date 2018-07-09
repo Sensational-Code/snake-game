@@ -1,6 +1,6 @@
 function Gameboard() {
-	this.width = 30;
-	this.height = 30;
+	this.width = 50;
+	this.height = 50;
 
 	return this;
 }
