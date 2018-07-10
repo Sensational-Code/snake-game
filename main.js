@@ -1,7 +1,7 @@
 var game = new SnakeGame();
 
 function randomIntBetween(min, max) {
-	return Math.floor(Math.random() * (max - min+1) + min);
+	return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 window.onload = function() {
@@ -9,7 +9,6 @@ window.onload = function() {
 }
 
 window.onkeydown = function(event) {
-	game.snake.newDirection = 1;
 	game.snake.newDirection = {
 		37: -1, // left arrow
 		39: 1, // right arrow

@@ -1,9 +1,10 @@
-function Snake(x, y) {
+function Snake(x, y, gameboard) {
 	this.blocks = [{
 		x: x || 0,
 		y: y || 0
 	}];
 
+	this.board = gameboard;
 	this.direction = 0; // 0: stop, -1: left, 1: right, -2: up, 2: down
 	this.newDirection = 0;
 	this.length = 1;
@@ -13,10 +14,6 @@ function Snake(x, y) {
 }
 
 Snake.prototype = {
-	addBlock: function() {
-		var newBlock = [];
-	},
-
 	update: function() {
 		if (!this.dead) {
 			// If the new direction is the opposite of the current direction, don't do anything,
@@ -54,7 +51,9 @@ Snake.prototype = {
 		}
 	},
 
-	render: function(context, blockSize) {
+	render: function(context) {
+		var blockSize = this.board.blockSize;
+		
 		// Render tail
 		context.fillStyle = 'black';
 		for (var i = 1; i < this.blocks.length; ++i) {

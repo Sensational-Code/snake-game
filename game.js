@@ -1,13 +1,11 @@
 function SnakeGame() {
 	this.board = new Gameboard();
-	this.snake = new Snake(this.board.width/2 - 1, this.board.height/2 - 1);
-	this.candies = [new Candy().findNewSpot(this.board.width, this.board.height, this.snake.blocks)];
-
-	this.blockSize = 10;
+	this.snake = new Snake(this.board.width/2 - 1, this.board.height/2 - 1, this.board);
+	this.candies = [new Candy(0, 0, this.board).findNewSpot(this.snake.blocks)];
 
 	this.canvas = document.createElement('canvas');
-	this.canvas.width = this.board.width * this.blockSize;
-	this.canvas.height = this.board.height * this.blockSize;
+	this.canvas.width = this.board.width * this.board.blockSize;
+	this.canvas.height = this.board.height * this.board.blockSize;
 	this.canvas.style.border = '1px solid';
 	this.context = this.canvas.getContext('2d');
 
@@ -21,8 +19,8 @@ SnakeGame.prototype = {
 	},
 
 	reset: function() {
-		this.snake = new Snake(this.board.width/2 - 1, this.board.height/2 - 1);
-		this.candies = [new Candy().findNewSpot(this.board.width, this.board.height, this.snake.blocks)];
+		this.snake = new Snake(this.board.width/2 - 1, this.board.height/2 - 1, this.board);
+		this.candies = [new Candy(0, 0, this.board).findNewSpot(this.snake.blocks)];
 	},
 
 	update: function() {
@@ -33,7 +31,7 @@ SnakeGame.prototype = {
 				var candy = this.candies[i];
 				if (this.snake.blocks[0].x === candy.x && this.snake.blocks[0].y === candy.y) {
 					this.snake.length += 1;
-					candy.findNewSpot(this.board.width, this.board.height, this.snake.blocks);
+					candy.findNewSpot(this.snake.blocks);
 				}
 			}
 		}
@@ -46,10 +44,10 @@ SnakeGame.prototype = {
 
 		for (var i = 0; i < this.candies.length; ++i) {
 			var candy = this.candies[i];
-			candy.render(this.context, this.blockSize);
+			candy.render(this.context);
 		}
 
-		this.snake.render(this.context, this.blockSize);
+		this.snake.render(this.context);
 
 		if (this.snake.dead) {
 			this.context.fillStyle = 'red';
