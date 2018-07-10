@@ -37,6 +37,12 @@ Snake.prototype = {
 				newBlock.y += (this.direction/2);
 			}
 
+			// If the snake collides with the walls
+			if (newBlock.x < 0 || newBlock.x > this.board.width-1 || newBlock.y < 0 || newBlock.y > this.board.height-1) {
+				this.dead = true;
+				return; // freeze the snake in place, no need to continue
+			}
+
 			// Add a new block at the front of the snake, remove last tail block
 			this.blocks.unshift(newBlock);
 			this.blocks = this.blocks.slice(0, this.length);
@@ -53,16 +59,15 @@ Snake.prototype = {
 
 	render: function(context) {
 		var blockSize = this.board.blockSize;
-		
-		// Render tail
-		context.fillStyle = 'black';
-		for (var i = 1; i < this.blocks.length; ++i) {
-			var block = this.blocks[i];
-			context.fillRect(block.x * blockSize, block.y * blockSize, blockSize, blockSize);
-		}
+		var green = 0;
+		context.fillStyle = 'rgb(151, 225, ' + green + ')';
+		for (var i = 0; i < this.blocks.length; ++i) {
+			green += 20;
+			if (green > 150) green = 0;
 
-		// Render head
-		context.fillStyle = 'red';
-		context.fillRect(this.blocks[0].x * blockSize, this.blocks[0].y * blockSize, blockSize, blockSize);
+			var block = this.blocks[i];
+			context.fillStyle = 'rgb(151, 225, ' + green + ')';
+			fillRoundedRect(context, block.x * blockSize, block.y * blockSize, blockSize, blockSize, 8);
+		}
 	}
 }

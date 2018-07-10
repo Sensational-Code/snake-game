@@ -1,7 +1,8 @@
 function Gameboard() {
-	this.width = 50;
-	this.height = 50;
-	this.blockSize = 10;
+	// Make sure the width and height are even numbers so the snake can spawn in the middle
+	this.width = 24;
+	this.height = 24;
+	this.blockSize = 22;
 
 	return this;
 }

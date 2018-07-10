@@ -6,7 +6,7 @@ function SnakeGame() {
 	this.canvas = document.createElement('canvas');
 	this.canvas.width = this.board.width * this.board.blockSize;
 	this.canvas.height = this.board.height * this.board.blockSize;
-	this.canvas.style.border = '1px solid';
+	this.canvas.style.border = '22px solid #91A6FF';
 	this.context = this.canvas.getContext('2d');
 
 	return this;
@@ -14,7 +14,7 @@ function SnakeGame() {
 
 SnakeGame.prototype = {
 	init: function() {
-		setInterval(this.update.bind(this), 120);
+		setInterval(this.update.bind(this), 80);
 		document.body.appendChild(this.canvas);
 	},
 
@@ -40,7 +40,8 @@ SnakeGame.prototype = {
 	},
 
 	render: function() {
-		this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+		this.context.fillStyle = '#FFFFFF';
+		this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
 		for (var i = 0; i < this.candies.length; ++i) {
 			var candy = this.candies[i];
@@ -50,8 +51,8 @@ SnakeGame.prototype = {
 		this.snake.render(this.context);
 
 		if (this.snake.dead) {
-			this.context.fillStyle = 'red';
-			this.context.font = this.canvas.width/15 + 'px Courier New';
+			this.context.fillStyle = '#EA9010';
+			this.context.font = 'bold ' + this.canvas.width/15 + 'px Courier New';
 			this.context.fillText('Click to restart', this.canvas.width/6, this.canvas.height/3);
 		}
 	}
