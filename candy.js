@@ -22,8 +22,11 @@ Candy.prototype = {
 	},
 
 	render: function(context) {
-		var blockSize = this.board.blockSize;
+		var boardX = this.board.x,
+				boardY = this.board.y,
+				blockSize = this.board.blockSize;
+
 		context.fillStyle = '#FF5154';
-		fillRoundedRect(context, this.x * blockSize, this.y * blockSize, blockSize, blockSize, 8);
+		fillRoundedRect(context, this.x * blockSize + boardX, this.y * blockSize + boardY, blockSize, blockSize, 8);
 	}
 }
