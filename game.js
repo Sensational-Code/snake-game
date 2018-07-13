@@ -20,6 +20,33 @@ SnakeGame.prototype = {
 	init: function() {
 		setInterval(this.update.bind(this), 80);
 		document.body.appendChild(this.canvas);
+		this.addListeners();
+	},
+
+	addListeners: function() {
+		window.addEventListener('keydown', this.handleKeyDown.bind(this));
+		this.canvas.addEventListener('click', this.handleClick.bind(this));
+	},
+
+	handleKeyDown: function(event) {
+		this.snake.newDirection = {
+			37: -1, // left arrow
+			39: 1, // right arrow
+			38: -2, // up arrow
+			40: 2 // down arrow
+		}[event.keyCode] || this.snake.newDirection;
+
+		// Make spacebar reset the game as a shortcut
+		if (event.keyCode === 32 && this.snake.dead) {
+				this.reset();
+		}
+		console.log(this.snake.direction);
+	},
+
+	handleClick: function(event) {
+		if (this.snake.dead) {
+			this.reset();
+		}
 	},
 
 	reset: function() {

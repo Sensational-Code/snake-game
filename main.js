@@ -1,22 +1,5 @@
 var game = new SnakeGame();
 
-window.onload = function() {
+window.addEventListener('load', function(event) {
 	game.init();
-}
-
-window.onkeydown = function(event) {
-	game.snake.newDirection = {
-		37: -1, // left arrow
-		39: 1, // right arrow
-		38: -2, // up arrow
-		40: 2 // down arrow
-	}[event.keyCode] || game.snake.newDirection;
-
-	console.log(game.snake.direction);
-}
-
-window.onclick = function() {
-	if (game.snake.dead) {
-		game.reset();
-	}
-}
+});
