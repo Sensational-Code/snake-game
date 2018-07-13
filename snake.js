@@ -70,7 +70,7 @@ Snake.prototype = {
 
 			var block = this.blocks[i];
 			context.fillStyle = 'rgb(151, 225, ' + green + ')';
-			fillRoundedRect(context, block.x * blockSize + boardX, block.y * blockSize + boardY, blockSize, blockSize, 8);
+			helpers.fillRoundedRect(context, block.x * blockSize + boardX, block.y * blockSize + boardY, blockSize, blockSize, 8);
 		}
 	}
 }
