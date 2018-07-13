@@ -38,7 +38,7 @@ SnakeGame.prototype = {
 
 		// Make spacebar reset the game as a shortcut
 		if (event.keyCode === 32 && this.snake.dead) {
-				this.reset();
+			this.reset();
 		}
 		console.log(this.snake.direction);
 	},
