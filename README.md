@@ -1,10 +1,17 @@
 # snake-game
 A rudimentary snake game side project I try to set aside ~25 minutes (1 pomodoro) a day to work on.
 
-[Try it here](https://rawgit.com/Sensational-Code/snake-game/master/index.html)
+#### [Try it here](https://rawgit.com/Sensational-Code/snake-game/master/index.html)
 
 ## How to play
+Control the snake to eat as much candy as you can to beat your high score!
+
+Try not to collide with yourself or the walls, or you'll get a game over!
+
+## Controls
 Use the `UP`, `DOWN`, `LEFT`, and `RIGHT` arrows to control the snake.
+
+To restart after a game over, click the game or press `SPACEBAR`.
 
 ## Installing
 Clone this repo and run a local web server to host the index.html.
